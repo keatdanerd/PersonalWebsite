@@ -38,6 +38,16 @@
             scroll-behavior: smooth;
         }
 
+        .responsive-image {
+    width: 100%;       /* Image fills the width of its container */
+    max-width: 300px;  /* Maximum width for larger screens */
+    height: auto;      /* Maintains aspect ratio */
+    border-radius: 50%; /* Makes it circular */
+    display: block;    /* Removes inline spacing */
+    margin: 0 auto;    /* Centers the image */
+}
+
+
         /* Custom animation for project cards */
         @keyframes fadeInUp {
             from {
@@ -120,8 +130,8 @@
             <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                    <img src=".venv/Images/Senator_Headshots2023-06.jpg" height="1365"
-                                               width="2048"/>
+                    <img src=".venv/Images/Senator_Headshots2023-06.jpg" alt="My Headshot" class="responsive-image">
+/>
 
                 </div>
                 <div class="md:w-2/3 md:pl-12">
@@ -164,9 +174,7 @@
                         <p class="text-gray-600 mb-4">
                             A modern e-commerce solution with seamless checkout, product management, and analytics dashboard.
                         </p>
-                        <a href="#" class="text-[#0077cc] font-medium hover:underline inline-flex items-center">
-                            Learn More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+
                     </div>
                 </div>
 
@@ -180,9 +188,7 @@
                         <p class="text-gray-600 mb-4">
                             Mobile application that helps travelers discover hidden gems and plan their perfect itinerary.
                         </p>
-                        <a href="#" class="text-[#0077cc] font-medium hover:underline inline-flex items-center">
-                            Learn More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+
                     </div>
                 </div>
 
@@ -196,9 +202,7 @@
                         <p class="text-gray-600 mb-4">
                             A comprehensive health monitoring system with wearable integration and personalized insights.
                         </p>
-                        <a href="#" class="text-[#0077cc] font-medium hover:underline inline-flex items-center">
-                            Learn More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+
                     </div>
                 </div>
 
@@ -212,9 +216,7 @@
                         <p class="text-gray-600 mb-4">
                             Real-time collaboration platform for remote teams with integrated task management.
                         </p>
-                        <a href="#" class="text-[#0077cc] font-medium hover:underline inline-flex items-center">
-                            Learn More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+
                     </div>
                 </div>
 
@@ -228,9 +230,7 @@
                         <p class="text-gray-600 mb-4">
                             AI-powered music recommendation engine with personalized playlists and discovery features.
                         </p>
-                        <a href="#" class="text-[#0077cc] font-medium hover:underline inline-flex items-center">
-                            Learn More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+
                     </div>
                 </div>
 
@@ -244,9 +244,7 @@
                         <p class="text-gray-600 mb-4">
                             Comprehensive dashboard for tracking project progress, team performance, and deadlines.
                         </p>
-                        <a href="#" class="text-[#0077cc] font-medium hover:underline inline-flex items-center">
-                            Learn More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
+
                     </div>
                 </div>
             </div>
