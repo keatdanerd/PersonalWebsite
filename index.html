@@ -440,7 +440,22 @@
                                 </a>
                                  </div>
                         </div>
-                               <!-- Weather Widget -->
+              <div id="weather-icon" style="width:80px; height:80px; background:#f3f3f3;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+  // test animation (sunny)
+  lottie.loadAnimation({
+    container: document.getElementById("weather-icon"),
+    renderer: "svg",
+    loop: true,
+    autoplay: true,
+    path: "https://assets2.lottiefiles.com/packages/lf20_t24tpvcu.json"
+  });
+</script>
+
+                        
+                        <!-- Weather Widget -->
 <div id="weather-widget" class="mt-8 p-6 bg-white rounded-xl shadow-md flex items-center space-x-4">
   <div id="weather-icon" style="width:60px; height:60px;"></div>
   <div>
