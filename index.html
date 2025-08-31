@@ -442,9 +442,9 @@
                         </div>
             
                         
-                        <!-- Weather Widget -->
+                     <!-- Weather Widget -->
 <div id="weather-widget" class="mt-8 p-6 bg-white rounded-xl shadow-md flex items-center space-x-4">
-  <div id="weather-icon" style="width:60px; height:60px;"></div>
+  <div id="weather-icon" style="width:80px; height:80px;"></div>
   <div>
     <p id="weather-location" class="font-semibold text-lg">Abilene, TX</p>
     <p id="weather-temp" class="text-gray-600">--°F</p>
@@ -458,6 +458,13 @@
   </p>
   <p class="text-sm text-gray-500 mt-2">— Sir Isaac Newton</p>
 </div>
+                         <!-- Quote Section -->
+<div class="mt-6 p-4 bg-gray-100 rounded-lg shadow-inner text-center">
+  <p class="text-lg italic text-gray-600">
+    “Gravity explains the motions of the planets, but it cannot explain who set the planets in motion. God governs all things and knows all that is or can be done.”
+  </p>
+  <p class="text-sm text-gray-500 mt-2">— Sir Isaac Newton</p>
+</div>
                         
 <!-- Lottie Player -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
@@ -465,23 +472,22 @@
 <script>
   async function getWeather() {
     const apiKey = "f90e5650362570c55527be769a828bc9"; // your OpenWeatherMap API key
-    const city = "Abilene,TX,US"; 
+    const city = "Abilene,US";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-
+    
     try {
       const res = await fetch(url);
-      if (!res.ok) throw new Error("Weather fetch failed: " + res.status);
       const data = await res.json();
 
       // Update text
       document.getElementById("weather-temp").textContent = Math.round(data.main.temp) + "°F";
       document.getElementById("weather-desc").textContent = data.weather[0].description;
 
-      // Pick animation based on weather
+      // Choose animation
       const main = data.weather[0].main.toLowerCase();
       let animationPath = "";
 
-     if (main.includes("cloud")) {
+      if (main.includes("cloud")) {
         animationPath = "https://lottie.host/8f0aa63c-cbd7-4950-b934-2dd77a54e47d/M67R9xTdJm.json"; // clouds
       } 
       else if (main.includes("rain")) {
@@ -507,8 +513,8 @@
       });
 
     } catch (err) {
-      console.error(err);
-      document.getElementById("weather-desc").textContent = "Unable to load weather.";
+      console.error("Weather fetch error:", err);
+      document.getElementById("weather-desc").textContent = "Error fetching weather.";
     }
   }
 
