@@ -438,7 +438,55 @@
                                     class="bg-gray-200 p-3 rounded-full text-gray-700 hover:bg-[#0077cc] hover:text-white transition">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                
+                                <!-- Weather Widget -->
+<div id="weather-widget" class="mt-8 p-6 bg-white rounded-xl shadow-md flex items-center space-x-4">
+  <div id="weather-icon" style="width:60px; height:60px;"></div>
+  <div>
+    <p id="weather-location" class="font-semibold text-lg">Abilene, TX</p>
+    <p id="weather-temp" class="text-gray-600">--°F</p>
+    <p id="weather-desc" class="text-sm text-gray-500 italic">Fetching weather...</p>
+  </div>
+</div>
+
+<!-- Lottie Player -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+<script>
+  async function getWeather() {
+    const apiKey = "f90e5650362570c55527be769a828bc9"; // OpenWeatherMap API key
+    const city = "Abilene,US"; 
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
+    
+    const res = await fetch(url);
+    const data = await res.json();
+
+    // Update text
+    document.getElementById("weather-temp").textContent = Math.round(data.main.temp) + "°F";
+    document.getElementById("weather-desc").textContent = data.weather[0].description;
+
+    // Pick animation based on weather
+    const main = data.weather[0].main.toLowerCase();
+    let animationPath = "";
+
+    if (main.includes("cloud")) animationPath = "https://assets7.lottiefiles.com/packages/lf20_jmgekfqg.json";
+    else if (main.includes("rain")) animationPath = "https://assets9.lottiefiles.com/packages/lf20_qm8eqzse.json";
+    else if (main.includes("clear")) animationPath = "https://assets1.lottiefiles.com/private_files/lf30_t24tpvcu.json";
+    else if (main.includes("snow")) animationPath = "https://assets4.lottiefiles.com/packages/lf20_f1dhz0c2.json";
+    else animationPath = "https://assets7.lottiefiles.com/packages/lf20_jmgekfqg.json"; // default: cloudy
+
+    // Load animation
+    lottie.loadAnimation({
+      container: document.getElementById("weather-icon"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: animationPath
+    });
+  }
+
+  getWeather();
+</script>
+
             
                             </div>
                         </div>
