@@ -438,7 +438,9 @@
                                     class="bg-gray-200 p-3 rounded-full text-gray-700 hover:bg-[#0077cc] hover:text-white transition">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <!-- Weather Widget -->
+                                 </div>
+                        </div>
+                               <!-- Weather Widget -->
 <div id="weather-widget" class="mt-8 p-6 bg-white rounded-xl shadow-md flex items-center space-x-4">
   <div id="weather-icon" style="width:60px; height:60px;"></div>
   <div>
@@ -453,39 +455,47 @@
 
 <script>
   async function getWeather() {
-    const apiKey = "f90e5650362570c55527be769a828bc9"; // OpenWeatherMap API key
-    const city = "Abilene,US"; 
+    const apiKey = "f90e5650362570c55527be769a828bc9"; // your OpenWeatherMap API key
+    const city = "Abilene,TX,US"; 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-    
-    const res = await fetch(url);
-    const data = await res.json();
 
-    // Update text
-    document.getElementById("weather-temp").textContent = Math.round(data.main.temp) + "°F";
-    document.getElementById("weather-desc").textContent = data.weather[0].description;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Weather fetch failed: " + res.status);
+      const data = await res.json();
 
-    // Pick animation based on weather
-    const main = data.weather[0].main.toLowerCase();
-    let animationPath = "";
+      // Update text
+      document.getElementById("weather-temp").textContent = Math.round(data.main.temp) + "°F";
+      document.getElementById("weather-desc").textContent = data.weather[0].description;
 
-    if (main.includes("cloud")) animationPath = "https://assets7.lottiefiles.com/packages/lf20_jmgekfqg.json";
-    else if (main.includes("rain")) animationPath = "https://assets9.lottiefiles.com/packages/lf20_qm8eqzse.json";
-    else if (main.includes("clear")) animationPath = "https://assets1.lottiefiles.com/private_files/lf30_t24tpvcu.json";
-    else if (main.includes("snow")) animationPath = "https://assets4.lottiefiles.com/packages/lf20_f1dhz0c2.json";
-    else animationPath = "https://assets7.lottiefiles.com/packages/lf20_jmgekfqg.json"; // default: cloudy
+      // Pick animation based on weather
+      const main = data.weather[0].main.toLowerCase();
+      let animationPath = "";
 
-    // Load animation
-    lottie.loadAnimation({
-      container: document.getElementById("weather-icon"),
-      renderer: "svg",
-      loop: true,
-      autoplay: true,
-      path: animationPath
-    });
+      if (main.includes("cloud")) animationPath = "https://lottie.host/6a53a532-f3d5-4f3c-bd5c-abb63d58aa76/m8nMTHm5UJ.json";
+      else if (main.includes("rain")) animationPath = "https://lottie.host/2e46ac5f-f68d-4c59-a88a-41a4510f02b8/4Ym7udw5J7.json";
+      else if (main.includes("clear")) animationPath = "https://lottie.host/8fcff9cd-1b77-4bc2-8d93-0f0e93a66f3d/KN6tWJj0Qr.json";
+      else if (main.includes("snow")) animationPath = "https://lottie.host/58a64c02-1673-4904-9181-12618d2a7dc4/mMErE83zHf.json";
+      else animationPath = "https://lottie.host/6a53a532-f3d5-4f3c-bd5c-abb63d58aa76/m8nMTHm5UJ.json"; // default: cloudy
+
+      // Load animation
+      lottie.loadAnimation({
+        container: document.getElementById("weather-icon"),
+        renderer: "svg",
+        loop: true,
+        autoplay: true,
+        path: animationPath
+      });
+
+    } catch (err) {
+      console.error(err);
+      document.getElementById("weather-desc").textContent = "Unable to load weather.";
+    }
   }
 
   getWeather();
 </script>
+
 
             
                             </div>
