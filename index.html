@@ -446,9 +446,9 @@
   <p id="date" class="text-lg font-semibold text-gray-700"></p>
   <p id="time" class="text-2xl font-bold text-[#0077cc]"></p>
 </div>
-                     <!-- Weather Widget -->
+          <!-- Weather Widget -->
 <div id="weather-widget" class="mt-8 p-6 bg-white rounded-xl shadow-md flex items-center space-x-4">
-  <div id="weather-icon" style="width:80px; height:80px;"></div>
+  <div id="weather-icon" style="font-size: 48px;">☀️</div>
   <div>
     <p id="weather-location" class="font-semibold text-lg">Abilene, TX</p>
     <p id="weather-temp" class="text-gray-600">--°F</p>
@@ -488,59 +488,39 @@
   setInterval(updateDateTime, 1000);
 </script>
                         
-                        <!-- Lottie Player -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+      <script>
+async function getWeather() {
+  const apiKey = "f90e5650362570c55527be769a828bc9";
+  const city = "Abilene,US";
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
 
-<script>
-  async function getWeather() {
-    const apiKey = "f90e5650362570c55527be769a828bc9"; // your OpenWeatherMap API key
-    const city = "Abilene,US";
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-    
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("Failed to fetch weather");
+    const data = await res.json();
 
-      // Update text
-      document.getElementById("weather-temp").textContent = Math.round(data.main.temp) + "°F";
-      document.getElementById("weather-desc").textContent = data.weather[0].description;
+    document.getElementById("weather-temp").textContent = Math.round(data.main.temp) + "°F";
+    document.getElementById("weather-desc").textContent = data.weather[0].description;
 
-      // Choose animation
-      const main = data.weather[0].main.toLowerCase();
-      let animationPath = "";
+    const main = data.weather[0].main.toLowerCase();
+    let emoji = "☁️"; // default cloudy
 
-      if (main.includes("cloud")) {
-        animationPath = "https://lottie.host/8f0aa63c-cbd7-4950-b934-2dd77a54e47d/M67R9xTdJm.json"; // clouds
-      } 
-      else if (main.includes("rain")) {
-        animationPath = "https://lottie.host/1eb73324-2c4f-4d56-bfd6-379721dcd6f3/zsH7Viq6sO.json"; // rain
-      } 
-      else if (main.includes("clear")) {
-        animationPath = "https://lottie.host/11c8d00d-25bb-47f2-8ec6-b9b3f27dbf64/aySYpZrhnB.json"; // sun
-      } 
-      else if (main.includes("snow")) {
-        animationPath = "https://lottie.host/b4d5248d-875b-4144-8702-68b9271e09d5/bZMMvG69Tz.json"; // snow
-      } 
-      else {
-        animationPath = "https://lottie.host/8f0aa63c-cbd7-4950-b934-2dd77a54e47d/M67R9xTdJm.json"; // default: cloudy
-      }
+    if (main.includes("cloud")) emoji = "☁️";
+    else if (main.includes("rain")) emoji = "🌧️";
+    else if (main.includes("clear")) emoji = "☀️";
+    else if (main.includes("snow")) emoji = "❄️";
+    else if (main.includes("storm") || main.includes("thunder")) emoji = "⛈️";
 
-      // Load animation
-      lottie.loadAnimation({
-        container: document.getElementById("weather-icon"),
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        path: animationPath
-      });
+    document.getElementById("weather-icon").textContent = emoji;
 
-    } catch (err) {
-      console.error("Weather fetch error:", err);
-      document.getElementById("weather-desc").textContent = "Error fetching weather.";
-    }
+  } catch(err) {
+    console.error(err);
+    document.getElementById("weather-desc").textContent = "Unable to load weather.";
+    document.getElementById("weather-icon").textContent = "❓";
   }
+}
 
-  getWeather();
+getWeather();
 </script>
                  
                             </div>
