@@ -440,20 +440,7 @@
                                 </a>
                                  </div>
                         </div>
-              <div id="weather-icon" style="width:80px; height:80px; background:#f3f3f3;"></div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-<script>
-  // test animation (sunny)
-  lottie.loadAnimation({
-    container: document.getElementById("weather-icon"),
-    renderer: "svg",
-    loop: true,
-    autoplay: true,
-    path: "https://assets2.lottiefiles.com/packages/lf20_t24tpvcu.json"
-  });
-</script>
-
+            
                         
                         <!-- Weather Widget -->
 <div id="weather-widget" class="mt-8 p-6 bg-white rounded-xl shadow-md flex items-center space-x-4">
@@ -494,11 +481,21 @@
       const main = data.weather[0].main.toLowerCase();
       let animationPath = "";
 
-      if (main.includes("cloud")) animationPath = "https://lottie.host/6a53a532-f3d5-4f3c-bd5c-abb63d58aa76/m8nMTHm5UJ.json";
-      else if (main.includes("rain")) animationPath = "https://lottie.host/2e46ac5f-f68d-4c59-a88a-41a4510f02b8/4Ym7udw5J7.json";
-      else if (main.includes("clear")) animationPath = "https://lottie.host/8fcff9cd-1b77-4bc2-8d93-0f0e93a66f3d/KN6tWJj0Qr.json";
-      else if (main.includes("snow")) animationPath = "https://lottie.host/58a64c02-1673-4904-9181-12618d2a7dc4/mMErE83zHf.json";
-      else animationPath = "https://lottie.host/6a53a532-f3d5-4f3c-bd5c-abb63d58aa76/m8nMTHm5UJ.json"; // default: cloudy
+     if (main.includes("cloud")) {
+        animationPath = "https://lottie.host/8f0aa63c-cbd7-4950-b934-2dd77a54e47d/M67R9xTdJm.json"; // clouds
+      } 
+      else if (main.includes("rain")) {
+        animationPath = "https://lottie.host/1eb73324-2c4f-4d56-bfd6-379721dcd6f3/zsH7Viq6sO.json"; // rain
+      } 
+      else if (main.includes("clear")) {
+        animationPath = "https://lottie.host/11c8d00d-25bb-47f2-8ec6-b9b3f27dbf64/aySYpZrhnB.json"; // sun
+      } 
+      else if (main.includes("snow")) {
+        animationPath = "https://lottie.host/b4d5248d-875b-4144-8702-68b9271e09d5/bZMMvG69Tz.json"; // snow
+      } 
+      else {
+        animationPath = "https://lottie.host/8f0aa63c-cbd7-4950-b934-2dd77a54e47d/M67R9xTdJm.json"; // default: cloudy
+      }
 
       // Load animation
       lottie.loadAnimation({
