@@ -90,7 +90,6 @@
                 <a href="#about" class="hover:text-[#0077cc] transition">About</a>
                 <a href="#projects" class="hover:text-[#0077cc] transition">Experience</a>
                 <a href="#hobbies" class="hover:text-[#0077cc] transition">Hobbies</a>
-               <li><a href="thoughts.html">Thoughts</a></li> 
                 <a href="#contact" class="hover:text-[#0077cc] transition">Contact</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-gray-600">
@@ -493,6 +492,7 @@
 </script>
                         
       <script>
+
 async function getWeather() {
   const apiKey = "f90e5650362570c55527be769a828bc9";
   const city = "Abilene,US";
@@ -511,9 +511,20 @@ async function getWeather() {
 
     if (main.includes("cloud")) emoji = "☁️";
     else if (main.includes("rain")) emoji = "🌧️";
-    else if (main.includes("clear")) emoji = "☀️";
     else if (main.includes("snow")) emoji = "❄️";
     else if (main.includes("storm") || main.includes("thunder")) emoji = "⛈️";
+    else if (main.includes("clear")) {
+      // Check if it's day or night
+      const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
+      const sunrise = data.sys.sunrise; // Sunrise time from API
+      const sunset = data.sys.sunset;   // Sunset time from API
+      
+      if (currentTime > sunset || currentTime < sunrise) {
+        emoji = "🌙"; // It's night
+      } else {
+        emoji = "☀️"; // It's day
+      }
+    }
 
     document.getElementById("weather-icon").textContent = emoji;
 
@@ -525,6 +536,7 @@ async function getWeather() {
 }
 
 getWeather();
+
 </script>
                  
                             </div>
