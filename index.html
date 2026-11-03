@@ -1,624 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keaton Raney</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Custom CSS for video overlay and smooth scrolling */
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .responsive-image {
-    width: 100%;       /* Image fills the width of its container */
-    max-width: 300px;  /* Maximum width for larger screens */
-    height: auto;      /* Maintains aspect ratio */
-    border-radius: 50%; /* Makes it circular */
-    display: block;    /* Removes inline spacing */
-    margin: 0 auto;    /* Centers the image */
-}
-
-
-        /* Custom animation for project cards */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fadeInUp {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        /* Custom section spacing */
-        section {
-            padding: 5rem 0;
-        }
-
-        /* Custom form styling */
-        .form-input {
-            transition: all 0.3s ease;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .form-input:focus {
-            border-bottom-color: #0077cc;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keaton A. Raney</title>
+  <meta name="description" content="Keaton A. Raney is a physical chemistry Ph.D. student at UT Austin working on quantum sensing, spectroscopy, and molecular spin. Catalyzing Inquiry.">
+  <meta name="author" content="Keaton A. Raney">
+  <meta property="og:title" content="Keaton A. Raney">
+  <meta property="og:description" content="Keaton A. Raney is a physical chemistry Ph.D. student at UT Austin working on quantum sensing, spectroscopy, and molecular spin. Catalyzing Inquiry.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://keatonraney.com/">
+  <meta property="og:image" content="https://keatonraney.com/Images/GlassesHeadshot2.png">
+  <link rel="canonical" href="https://keatonraney.com/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="font-sans bg-gray-50 text-gray-800">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-sm z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-[#0077cc]">KAR</a>
-            <div class="hidden md:flex space-x-8">
-                <a href="#home" class="hover:text-[#0077cc] transition">Home</a>
-                <a href="#about" class="hover:text-[#0077cc] transition">About</a>
-                <a href="#projects" class="hover:text-[#0077cc] transition">Experience</a>
-                <a href="#hobbies" class="hover:text-[#0077cc] transition">Hobbies</a>
-                <a href="#contact" class="hover:text-[#0077cc] transition">Contact</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden text-gray-600">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </div>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white w-full px-6 py-4 border-t">
-            <div class="flex flex-col space-y-4">
-                <a href="#home" class="hover:text-[#0077cc] transition">Home</a>
-                <a href="#about" class="hover:text-[#0077cc] transition">About</a>
-                <a href="#projects" class="hover:text-[#0077cc] transition">Experience</a>
-                <a href="#hobbies" class="hover:text-[#0077cc] transition">Hobbies</a>
-                <a href="#contact" class="hover:text-[#0077cc] transition">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section with Video -->
-    <section id="home" class="pt-0">
-        <div class="video-container">
-            <!-- Replace the video source with your own video -->
-            <video autoplay muted loop playsinline>
-                <source src="Videos/personalwebsite.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-overlay">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Keaton A. Raney</h1>
-                <p class="text-xl md:text-2xl text-white">Catalyzing Inquiry</p>
-                <a href="#about" class="mt-8 px-8 py-3 bg-[#0077cc] text-white rounded-full hover:bg-[#005fa3] transition duration-300">
-                    Explore More
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12">About Me</h2>
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                    <img src="Images/GlassesHeadshot2.png" class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full responsive-image"/>
-
-                </div>
-                <div class="md:w-2/3 md:pl-12">
-                    <h3 class="text-2xl font-semibold mb-4">Hi, I'm Keaton</h3>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        I'm an incoming chemistry Ph.D. student at The University of Texas at Austin and a recent grad of ACU.
-                        I have an interdisciplinary research skillset of biochemistry, organometallics, spectroscopy, and computation.
-                    </p>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Outside the lab, I serve in student government, lead Chem Club as the chaplain, and mentor underclassmen.
-                        I believe in lifelong learning and hope to impact the world through science and intentional relationships.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <div class="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Leader</div>
-                        <div class="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Scientist</div>
-                        <div class="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Thinker</div>
-                        <div class="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Artist</div>
-                        <div class="bg-gray-100 px-4 py-2 rounded-full text-sm font-medium">Athlete</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-6">Experience</h2>
-            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                Here are some of my recent positions and research experiences. 
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp" style="animation-delay: 0.1s;">
-                    <img src="Images/gelnicepic.png"
-                         alt="Project 1"
-                         class="w-full h-64 md:w-100 md:h-80 object-cover"/> 
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Protein Research</h3>
-                        <p class="text-gray-600 mb-4">
-                            Advanced the study on the multimeric states of the fusion protein found in the mevalonate pathway using vector plasmid manipulation and protein expression techniques.
-                        </p>
-
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp" style="animation-delay: 0.2s;">
-                    <img src="Images/posterpicpng.png"
-                         alt="Project 2"
-                         class="w-full h-64 md:w-100 md:h-80 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Caltech WAVE Fellow</h3>
-                        <p class="text-gray-600 mb-4">
-                            Designed an experiment to study carbon radical recombination using pulse laser photolysis cavity ring-down spectroscopy.
-                        </p>
-
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp" style="animation-delay: 0.3s;">
-                    <img src="Images/workinginlab.JPEG"
-                         alt="Project 3"
-                         class="w-full h-64 md:w-100 md:h-80 object-cover"/>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Microbiology Research</h3>
-                        <p class="text-gray-600 mb-4">
-                            I studied quorum sensing inhibition and the biosynthetic pathway of prodigiosin in S. Marcescens.
-                        </p>
-
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp" style="animation-delay: 0.4s;">
-                    <img src="Images/teachingpic.png"
-                         alt="Project 4"
-                         class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Teaching Assistant and Tutor</h3>
-                        <p class="text-gray-600 mb-4">
-                            Developed individualized tutoring sessions in chemistry and biology courses. Taught organic chemistry wet lab and spectroscopy techniques to undergraduates at ACU.
-                        </p>
-
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp" style="animation-delay: 0.5s;">
-                    <img src="Images/SGApic.png"
-                         alt="Project 5"
-                         class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Student Government</h3>
-                        <p class="text-gray-600 mb-4">
-                            Elected as class president and class senator where I have served the student body as the chair of student affairs. I also organized ACU Green Week, an initiative for clean environmental practices.
-                        </p>
-
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp" style="animation-delay: 0.6s;">
-                    <img src="Images/Bannister_2.png"
-                         alt="Project 6"
-                         class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Inorganic Chemistry Research</h3>
-                        <p class="text-gray-600 mb-4">
-                            Synthesized novel osmium organometallic compounds to study hydrogenase biomimics. Utilized x-ray diffraction and studied x-ray crystallography.
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-<!-- Hobbies -->
-    <section id="hobbies" class="bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-6">Hobbies</h2>
-            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                These are some things that I like to do in my free time! I love being creative and working towards goals outside of work.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp" style="animation-delay: 0.1s;">
-                    <img src="Images/kart.JPG"
-                         alt="Project 1"
-                         class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Drawing</h3>
-                        <p class="text-gray-600 mb-4">
-                            I have pursued art since a young age. I mostly sketch animals and landscapes using charcoal, and sometimes I use oil pastels.
-                        </p>
-                        <a href="#contact" class="text-[#0077cc] font-medium hover:underline inline-flex items-center">
-                            Learn More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp" style="animation-delay: 0.2s;">
-                    <img src="Images/running.png"
-                         alt="Project 2"
-                         class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Running</h3>
-                        <p class="text-gray-600 mb-4">
-                            A retired track and cross country athlete, I enjoy running whenever I can.
-                        </p>
-                        <a href="#contact" class="text-[#0077cc] font-medium hover:underline inline-flex items-center">
-                            Learn More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp" style="animation-delay: 0.3s;">
-                    <img src="Images/bookspicture.png"
-                         alt="Project 3"
-                         class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2">Reading</h3>
-                        <p class="text-gray-600 mb-4">
-                            I collect more books than I read... I like to call myself a book dragon. When I do read I enjoy nonfiction, biographies, and some sci-fi.
-                        </p>
-                        <a href="#contact" class="text-[#0077cc] font-medium hover:underline inline-flex items-center">
-                            Learn More <i class="fas fa-arrow-right ml-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <nav class="site-nav over-hero" aria-label="Main">
+    <div class="container">
+      <a class="brand" href="index.html">Keaton A. Raney <small>Ph.D. Student</small></a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><i class="fa-solid fa-bars"></i></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="honors.html">Honors</a></li>
+        <li><a href="teaching.html">Teaching &amp; Service</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="beyond.html">Beyond the Lab</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
-    </section>
+  </nav>
 
-    <!-- Contact Section -->
-    <section id="contact" class="bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-6">Get In Touch</h2>
-            <p class="text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                Have any questions or want to collaborate? Feel free to reach out. I'm always open to meeting new people!
-            </p>
+  <main id="main">
 
-            <div class="flex flex-col md:flex-row gap-12">
-                <div class="md:w-1/2">
-                   <section id="carousel" class="bg-gray-50 p-8 rounded-xl h-128">
-                      <div class="container mx-auto">
-                      <h2 class="text-3xl font-bold text-center mb-8">Currently Reading</h2>
-
-                      <div class="relative w-full max-w-3xl mx-auto overflow-hidden rounded-xl shadow-lg">
-      <!-- Slides -->
-      <div class="flex transition-transform duration-700 ease-in-out" id="carousel-slides">
-        <img src="Images/foundation.webp" alt="Slide 1" class="w-full flex-shrink-0">
-        <img src="Images/vagabond.webp" alt="Slide 2" class="w-full flex-shrink-0">
-        <img src="Images/costofambition.webp" alt="Slide 3" class="w-full flex-shrink-0">
+    <section class="hero" aria-label="Introduction" style="padding:0">
+      <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <source src="Videos/personalwebsite.mp4" type="video/mp4">
+      </video>
+      <div class="hero-content">
+        <span class="eyebrow">Physical Chemistry &middot; The University of Texas at Austin</span>
+        <h1>Keaton A. Raney</h1>
+        <p class="slogan">Catalyzing <span>Inquiry</span></p>
+        <p class="lede">Ph.D. student using light and spin to turn molecules and materials into quantum sensors.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="research.html">Explore my research</a>
+          <a class="btn btn-ghost" href="cv.html">View CV</a>
+        </div>
       </div>
-
-      <!-- Controls -->
-      <button id="prev"
-        class="absolute top-1/2 left-4 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200">
-        &#10094;
-      </button>
-      <button id="next"
-        class="absolute top-1/2 right-4 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-200">
-        &#10095;
-      </button>
-    </div>
-  </div>
-</section>
-
-<script>
-  const slides = document.getElementById("carousel-slides");
-  const totalSlides = slides.children.length;
-  let index = 0;
-
-  function updateCarousel() {
-    slides.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  function showNext() {
-    index = (index + 1) % totalSlides;
-    updateCarousel();
-  }
-
-  function showPrev() {
-    index = (index - 1 + totalSlides) % totalSlides;
-    updateCarousel();
-  }
-
-  // Manual controls
-  document.getElementById("next").addEventListener("click", showNext);
-  document.getElementById("prev").addEventListener("click", showPrev);
-
-  // Auto-slide every 3 seconds
-  setInterval(showNext, 3000);
-</script>
-
-                </div>
-
-                <div class="md:w-1/2">
-                    <div class="bg-gray-50 p-8 rounded-xl h-full">
-                        <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
-                        <p class="text-gray-600 mb-6">
-                            Feel free to reach out through any of these channels. I typically respond within 48 hours.
-                        </p>
-
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <div class="bg-[#0077cc] text-white p-3 rounded-full mr-4">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500">Email</p>
-                                    <p class="font-medium">raneykeaton[at]gmail[dot]com</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
-                                <div class="bg-[#0077cc] text-white p-3 rounded-full mr-4">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500">LinkedIn</p>
-                                    <p class="font-medium">www.linkedin.com/in/keaton-raney-1p05457</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
-                                <div class="bg-[#0077cc] text-white p-3 rounded-full mr-4">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-500">Location</p>
-                                    <p class="font-medium">Abilene, TX</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-8">
-                            <h4 class="text-lg font-medium mb-4">Follow Me</h4>
-                            <div class="flex space-x-4">
-                                <a href="https://www.instagram.com/keaton_raney/?hl=en" 
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-gray-200 p-3 rounded-full text-gray-700 hover:bg-[#0077cc] hover:text-white transition">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/keaton-raney-1p05457" 
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-gray-200 p-3 rounded-full text-gray-700 hover:bg-[#0077cc] hover:text-white transition">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://www.github.com/keatdanerd" 
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="bg-gray-200 p-3 rounded-full text-gray-700 hover:bg-[#0077cc] hover:text-white transition">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                 </div>
-                        </div>
-            
-                        
-          <!-- Live Date & Time -->
-<div id="datetime" class="mt-6 text-center">
-  <p id="date" class="text-lg font-semibold text-gray-700"></p>
-  <p id="time" class="text-2xl font-bold text-[#0077cc]"></p>
-</div>
-                        
-                        <!-- Weather Widget -->
-<div id="weather-widget" class="mt-8 p-6 bg-white rounded-xl shadow-md flex items-center space-x-4">
-  <div id="weather-icon" style="font-size: 48px;">☀️</div>
-  <div>
-    <p id="weather-location" class="font-semibold text-lg">Abilene, TX</p>
-    <p id="weather-temp" class="text-gray-600">--°F</p>
-    <p id="weather-desc" class="text-sm text-gray-500 italic">Fetching weather...</p>
-  </div>
-</div>
-                     <!-- Quote Section -->
-<div class="mt-6 p-4 bg-gray-100 rounded-lg shadow-inner text-center">
-  <p class="text-lg italic text-gray-600">
-    “Gravity explains the motions of the planets, but it cannot explain who set the planets in motion. God governs all things and knows all that is or can be done.”
-  </p>
-  <p class="text-sm text-gray-500 mt-2">— Sir Isaac Newton</p>
-</div>   
-                       
-   
-                        <!-- Time script -->                    
-<script>
-  function updateDateTime() {
-    const now = new Date();
-
-    // Format date
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const dateStr = now.toLocaleDateString('en-US', options);
-
-    // Format time
-    const timeStr = now.toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-      second: '2-digit',
-    });
-
-    document.getElementById("date").textContent = dateStr;
-    document.getElementById("time").textContent = timeStr;
-  }
-
-  // Initial call + update every second
-  updateDateTime();
-  setInterval(updateDateTime, 1000);
-</script>
-                        
-      <script>
-
-async function getWeather() {
-  const apiKey = "f90e5650362570c55527be769a828bc9";
-  const city = "Abilene,US";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error("Failed to fetch weather");
-    const data = await res.json();
-
-    document.getElementById("weather-temp").textContent = Math.round(data.main.temp) + "°F";
-    document.getElementById("weather-desc").textContent = data.weather[0].description;
-
-    const main = data.weather[0].main.toLowerCase();
-    let emoji = "☁️"; // default cloudy
-
-    if (main.includes("cloud")) emoji = "☁️";
-    else if (main.includes("rain")) emoji = "🌧️";
-    else if (main.includes("snow")) emoji = "❄️";
-    else if (main.includes("storm") || main.includes("thunder")) emoji = "⛈️";
-    else if (main.includes("clear")) {
-      // Check if it's day or night
-      const currentTime = Math.floor(Date.now() / 1000); // Current time in seconds
-      const sunrise = data.sys.sunrise; // Sunrise time from API
-      const sunset = data.sys.sunset;   // Sunset time from API
-      
-      if (currentTime > sunset || currentTime < sunrise) {
-        emoji = "🌙"; // It's night
-      } else {
-        emoji = "☀️"; // It's day
-      }
-    }
-
-    document.getElementById("weather-icon").textContent = emoji;
-
-  } catch(err) {
-    console.error(err);
-    document.getElementById("weather-desc").textContent = "Unable to load weather.";
-    document.getElementById("weather-icon").textContent = "❓";
-  }
-}
-
-getWeather();
-
-</script>
-                 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to about"><i class="fa-solid fa-chevron-down"></i></a>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <a href="#" class="text-2xl font-bold text-white">Keaton A. Raney</a>
-                    <p class="text-gray-400 mt-2">Catalyzing Inquiry</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
-                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
-                    <a href="#projects" class="text-gray-400 hover:text-white transition">Experience</a>
-                    <a href="#hobbies" class="text-gray-400 hover:text-white transition">Hobbies</a>
-                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
-                </div>
+    <section id="about">
+      <div class="container">
+        <div class="bio">
+          <div class="bio-photo reveal">
+            <img src="Images/GlassesHeadshot2.png" alt="Portrait of Keaton Raney" width="560" height="700">
+            <p class="caption"><strong>Keaton A. Raney</strong>Ph.D. Student, Department of Chemistry<br>The University of Texas at Austin</p>
+          </div>
+          <div class="reveal">
+            <span class="eyebrow">About</span>
+            <h2>Asking how things work, then building the tools to find out</h2>
+            <p>Keaton Raney is a first-year Ph.D. student in physical chemistry at The University of Texas at Austin, co-advised by <a href="https://chemistry.utexas.edu/directory/sean-roberts" target="_blank" rel="noopener noreferrer">Prof. Sean Roberts</a> (Chemistry) and <a href="https://linanolight.org/" target="_blank" rel="noopener noreferrer">Prof. Xiaoqin Elaine Li</a> (Physics). His research is in quantum sensing: using the optical and spin properties of molecules and materials to measure the nanoscale world with exceptional sensitivity. He is helping build a new optically detected magnetic resonance (ODMR) instrument and trains across both groups, in time-resolved and ultrafast spectroscopy with the Roberts lab and in 2D-material sample preparation and device fabrication with the Li lab.</p>
+            <p>His route to physical chemistry has been unusually wide. He started college on a biology track, studying quorum sensing in bacteria and protein assembly in the mevalonate pathway, then fell for physical chemistry and took on extra mathematics to follow it. Along the way he synthesized osmium organometallic complexes as hydrogenase mimics at Abilene Christian University and, as a Southern California Edison WAVE Fellow at Caltech, designed a laser experiment to watch carbon radicals recombine. He earned his B.S. in Chemistry from ACU in 2026, with minors in biology and history.</p>
+            <p>Keaton is happiest working on questions that sit between fields. Outside the lab he draws in charcoal, runs, collects more books than he can read, and thinks about what the long history of science, philosophy, and religion can teach us today.</p>
+            <ul class="interest-tags" aria-label="Research interests">
+              <li>Quantum sensing</li><li>Molecular spin</li><li>Spectroscopy</li><li>2D materials</li><li>Quantum information science</li>
+            </ul>
+            <div class="btn-row left">
+              <a class="btn btn-primary" href="research.html">Research</a>
+              <a class="btn btn-outline" href="cv.html"><i class="fa-regular fa-file-lines"></i> CV</a>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>Last Updated: July 2026</p>
-            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Explore</span>
+          <h2>More about my work</h2>
+        </div>
+        <div class="grid grid-3">
+          <a class="card tile reveal" href="research.html">
+            <div class="icon"><i class="fa-solid fa-atom"></i></div>
+            <h3>Research</h3>
+            <p>Quantum sensing at UT Austin, plus earlier work in laser spectroscopy, organometallics, and biochemistry.</p>
+            <span class="card-link">Read more <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="card tile reveal" href="honors.html">
+            <div class="icon"><i class="fa-solid fa-award"></i></div>
+            <h3>Honors &amp; Awards</h3>
+            <p>Fellowships, scholarships, and recognition, including a Texas Leadership Research Scholarship and a Rhodes/Marshall nomination.</p>
+            <span class="card-link">See honors <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="card tile reveal" href="teaching.html">
+            <div class="icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h3>Teaching &amp; Service</h3>
+            <p>Teaching chemistry labs at UT Austin and ACU, tutoring, mentoring, and student leadership.</p>
+            <span class="card-link">Read more <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="card tile reveal" href="cv.html">
+            <div class="icon"><i class="fa-regular fa-file-lines"></i></div>
+            <h3>Curriculum Vitae</h3>
+            <p>Education, research experience, presentations, honors, and skills on one page, ready to print or save as a PDF.</p>
+            <span class="card-link">View CV <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="card tile reveal" href="beyond.html">
+            <div class="icon"><i class="fa-solid fa-pen-nib"></i></div>
+            <h3>Beyond the Lab</h3>
+            <p>Charcoal drawing, distance running, a growing bookshelf, and the history of science and faith.</p>
+            <span class="card-link">Read more <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+          <a class="card tile reveal" href="contact.html">
+            <div class="icon"><i class="fa-regular fa-envelope"></i></div>
+            <h3>Get in Touch</h3>
+            <p>Questions, collaborations, or a good book recommendation are always welcome.</p>
+            <span class="card-link">Contact <i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+    <section>
+      <div class="container narrow">
+        <div class="section-head">
+          <span class="eyebrow">News</span>
+          <h2>Recent milestones</h2>
+        </div>
+        <ul class="entries">
+          <li class="entry"><div class="issuer">Sep 2026</div><h3>Named a Texas Leadership Research Scholar</h3><p>A competitive state doctoral scholarship with peer mentoring and leadership development, renewable for up to four years.</p></li>
+          <li class="entry"><div class="issuer">Aug 2026</div><h3>Began a Ph.D. in physical chemistry at UT Austin</h3><p>Joined the Roberts (Chemistry) and Li (Physics) groups to work on quantum sensing.</p></li>
+          <li class="entry"><div class="issuer">May 2026</div><h3>Graduated from Abilene Christian University</h3><p>B.S. in Chemistry with minors in biology and history; received the Paul C. Witt Award and was named a University Scholar.</p></li>
+          <li class="entry"><div class="issuer">Oct 2025</div><h3>Rhodes and Marshall nomination</h3><p>One of two students nominated and endorsed by ACU for the Rhodes and Marshall Scholarships. The same month, presented undergraduate research at the Joint SERMACS/SWRM ACS Regional Meeting in Orlando.</p></li>
+          <li class="entry"><div class="issuer">Summer 2025</div><h3>WAVE Fellow at Caltech</h3><p>Experimental astrochemistry in the Okumura group, studying reactive carbon radicals with laser spectroscopy.</p></li>
+        </ul>
+      </div>
+    </section>
 
-        // Close mobile menu when clicking on a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+  </main>
 
-        // Navbar background change on scroll
-        const navbar = document.querySelector('nav');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white', 'shadow-md');
-            } else {
-                navbar.classList.remove('bg-white', 'shadow-md');
-            }
-        });
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <p class="footer-brand">Keaton A. Raney</p>
+          <p>Catalyzing Inquiry</p>
+          <div class="social">
+            <a href="#" data-email="raneykeaton|gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/keaton-raney-1p05457" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/keatdanerd" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <ul class="footer-links">
+          <li><a href="research.html">Research</a></li>
+          <li><a href="honors.html">Honors</a></li>
+          <li><a href="teaching.html">Teaching &amp; Service</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="beyond.html">Beyond the Lab</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span data-year>2026</span> Keaton A. Raney &middot; Department of Chemistry, The University of Texas at Austin</span>
+        <span>Last updated November 2026</span>
+      </div>
+    </div>
+  </footer>
 
-        // Animate project cards when they come into view
-        const projectCards = document.querySelectorAll('.animate-fadeInUp');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        projectCards.forEach(card => {
-            observer.observe(card);
-        });
-
-        // Form submission (prevent default for demo)
-        const form = document.querySelector('form');
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Form submission would happen here in a real implementation!');
-            form.reset();
-        });
-    </script>
+  <script src="assets/js/site.js"></script>
 </body>
 </html>
