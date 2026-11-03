@@ -1,6 +1,5 @@
 # keatonraney.com: site files
 
-Drop these files into the root of your site, next to your existing `Images/` and `Videos/` folders. Every image and video path stays the same as before, so nothing needs to be renamed. The new `index.html` replaces the old one.
 
 ```
 index.html      Home: video hero, bio, links to the other pages, news
